@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diversen/keyboard-piano.git"
+    "url": "git+https://github.com/diversen/pluggable-synth.git"
   },
   "keywords": [
     "audio",
@@ -20,9 +20,9 @@
   "author": "dennis iversen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/diversen/keyboard-piano/issues"
+    "url": "https://github.com/diversen/pluggable-synth/issues"
   },
-  "homepage": "https://github.com/diversen/keyboard-piano#readme",
+  "homepage": "https://github.com/diversen/pluggable-synth#readme",
   "dependencies": {
     "js-css-piano": "^1.0.6",
     "keyboard-tones": "^1.0.3",
