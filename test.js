@@ -30,7 +30,6 @@ function testSynth () {
 
 $(document).ready(function () {
 
-    // console.log(piano)
     var elemID = 'piano-container'
     var p = new pluggableSynth(elemID, {
         octaves: 2,
