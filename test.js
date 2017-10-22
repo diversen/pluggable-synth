@@ -1,7 +1,7 @@
 // Use it like this:  
-// const piano = require('keyboard-piano')
+// const synth = require('pluggable-synth')
 // But this is the test
-const piano = require('./index')
+const pluggableSynth = require('./index')
 const audioCtx = new AudioContext(); 
 const masterGain = audioCtx.createGain();
 masterGain.gain.value = 0.1;
@@ -32,16 +32,20 @@ $(document).ready(function () {
 
     // console.log(piano)
     var elemID = 'piano-container'
-    var p = new piano(elemID, {
+    var p = new pluggableSynth(elemID, {
         octaves: 2,
-        octaveBegin: 3
-        
+        octaveBegin: 3    
     })
     
+    // Draws piano
     p.createPiano()
+
+    // Set synth
     p.synth = testSynth
+    
     // Enable one octave of keyboard
     p.enableKeyboardEvents()
+    
     // All midi tones will be played, but only two octaves is visiable
     p.enableMidiEvents()
 

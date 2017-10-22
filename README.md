@@ -19,7 +19,7 @@ You can see [index.html](index.html) which includes the bundle built from [test.
 
 You can see this example here: 
 
-[https://diversen.github.io/js-css-piano/](https://diversen.github.io/js-css-piano/)
+[https://diversen.github.io/pluggable-synth/](https://diversen.github.io/pluggable-synth/)
 
 ## Build and watch example
 
