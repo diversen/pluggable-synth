@@ -1,0 +1,32 @@
+{
+  "name": "pluggable-synth",
+  "version": "1.0.0",
+  "description": "A simple piano to play on with your keyboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diversen/keyboard-piano.git"
+  },
+  "keywords": [
+    "audio",
+    "piano",
+    "synth",
+    "midi",
+    "webaudio"
+  ],
+  "author": "dennis iversen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diversen/keyboard-piano/issues"
+  },
+  "homepage": "https://github.com/diversen/keyboard-piano#readme",
+  "dependencies": {
+    "js-css-piano": "^1.0.6",
+    "keyboard-tones": "^1.0.3",
+    "note-parser": "^2.0.1",
+    "webmidi": "^2.0.0-rc.9"
+  }
+}
