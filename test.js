@@ -46,7 +46,7 @@ $(document).ready(function () {
     // Enable one octave of keyboard
     p.enableKeyboardEvents()
     
-    // All midi tones will be played, but only two octaves is visiable
+    // All midi tones will be played, but only two octaves is visible
     // You can specify input port, but defaults to 1 
     p.enableMidiEvents(1)
 
