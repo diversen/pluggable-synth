@@ -46,6 +46,7 @@ $(document).ready(function () {
     p.enableKeyboardEvents()
     
     // All midi tones will be played, but only two octaves is visiable
-    p.enableMidiEvents()
+    // Param is midi port. On linux this is the first connected midi device
+    p.enableMidiEvents(1)
 
 })

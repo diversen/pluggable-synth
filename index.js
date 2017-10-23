@@ -69,19 +69,25 @@ jsCssPiano.prototype = {
     },
 
     // Enable midi keyboard
-    enableMidiEvents: function () {
-        webmidi.enable((err) => {
+    enableMidiEvents: function (port) {
+        if (port === 'undefined') {
+            port = 1
+        }
+
+        webmidi.enable( (err) => {
 
             if (err) {
-                console.log("WebMidi could not be enabled.", err);
-                return;
-            } else {
-                console.log("WebMidi enabled!");
+                console.log("WebMidi could not be enabled." + err);
+                return false;
             }
 
-            console.log(webmidi.inputs)
-            var midiInput = webmidi.inputs[1];
+            if ( !(port in webmidi.inputs)) {
+               console.log('Modi port does not exists ' + port)
+               return false;
+            }
 
+            // Port is ok
+            var midiInput = webmidi.inputs[port];
             midiInput.addListener('noteon', "all", (e) => {
 
                 let octave = parseInt(e.note.octave)
@@ -101,10 +107,9 @@ jsCssPiano.prototype = {
 
                 this.synthStop(note)
 
-            }
-            );
-        });
-    }
+            });
+        })
+    },
 }
 
 module.exports = jsCssPiano;
