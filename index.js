@@ -71,7 +71,7 @@ jsCssPiano.prototype = {
 
     // Enable midi keyboard
     enableMidiEvents: function (port) {
-        if (port === 'undefined') {
+        if (port == undefined) {
             port = 1
         }
 

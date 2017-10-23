@@ -27,6 +27,7 @@ function testSynth () {
     }
 }
 
+var testSynth2 = require('./synth') 
 
 $(document).ready(function () {
 
@@ -40,13 +41,12 @@ $(document).ready(function () {
     p.createPiano()
 
     // Set synth
-    p.synth = testSynth
+    p.synth = testSynth2
     
     // Enable one octave of keyboard
     p.enableKeyboardEvents()
     
     // All midi tones will be played, but only two octaves is visiable
-    // Param is midi port. On linux this is the first connected midi device
-    p.enableMidiEvents(1)
+    p.enableMidiEvents()
 
 })
