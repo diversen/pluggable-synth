@@ -24,9 +24,11 @@
   },
   "homepage": "https://github.com/diversen/pluggable-synth#readme",
   "dependencies": {
+    "adsr-gain-node": "^1.0.7",
     "js-css-piano": "^1.0.6",
     "keyboard-tones": "^1.0.3",
     "note-parser": "^2.0.1",
+    "tone-frequency": "^1.0.5",
     "webmidi": "^2.0.0-rc.9"
   }
 }

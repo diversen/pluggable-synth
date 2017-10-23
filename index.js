@@ -3,7 +3,6 @@ const octave1 = require('./keyboard-tones.js').octave1;
 const jsCssPiano = require('js-css-piano');
 const webmidi = require('webmidi')
 
-
 var keys = {};
 
 jsCssPiano.prototype = {
@@ -68,6 +67,41 @@ jsCssPiano.prototype = {
             }
         });
     },
+    
+    // Enable mousedown and mouseup
+    enableMouseEvents: function () {
+        
+        document.addEventListener("mousedown", (e) => {
+            
+            var note = e.srcElement.dataset.note;
+            if (!note) {
+                return;
+            }
+
+            this.synthStart(note);
+        });
+
+        document.addEventListener("mouseup", (e) => {
+
+            var note = e.srcElement.dataset.note;
+            if (note in keys) {
+                this.synthStop(note)
+            }
+        });
+
+        document.addEventListener("mouseout", (e) => {
+            
+            var note = e.srcElement.dataset.note;
+            if (!note) {
+                return;
+            }
+            
+            if (note in keys) {
+                this.synthStop(note)
+            }
+        });
+    },
+
 
     // Enable midi keyboard
     enableMidiEvents: function (port) {
