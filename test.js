@@ -11,10 +11,14 @@ masterGain.gain.value = 0.1;
  * A very simple example synth
  * The synth which is going to be connected to the piano
  * must have a `start` and a `stop` method 
+ * 
  */
 function testSynth () {
 
     this.start = function (freq, options) {
+
+        console.log(freq)
+
         this.oscillator = audioCtx.createOscillator();
         this.oscillator.type = 'square';
         this.oscillator.frequency.value = freq; // value in hertz
@@ -43,7 +47,7 @@ $(document).ready(function () {
     p.createPiano()
 
     // Set synth to synth 2
-    p.synth = testSynth2
+    p.synth = testSynth
     
     // enable keyboard events
     p.enableKeyboardEvents()

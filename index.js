@@ -1,5 +1,5 @@
 const noteParser = require('note-parser')
-const octave1 = require('./keyboard-tones.js').octave1;
+const keyboardTones = require('./keyboard-tones.js');
 const jsCssPiano = require('js-css-piano');
 const webmidi = require('webmidi')
 
@@ -28,7 +28,7 @@ jsCssPiano.prototype = {
     },
 
     synthStart: function (note, options) {
-        note = note.toLowerCase()
+
         this.toggleKey(note)
         let freq = this.getFrequency(note);
         let synth = new this.synth();
@@ -38,31 +38,30 @@ jsCssPiano.prototype = {
     },
 
     synthStop: function (note) {
-        note = note.toLowerCase()
+
         this.toggleKey(note)
         let synth = keys[note]
         synth.stop()
         delete keys[note]
     },
 
-    // Enable one or two octaves on keyboard
+    // Enable only one octave on keyboard
     enableKeyboardEvents: function () {
         document.addEventListener("keydown", (e) => {
 
-            var k = e.key;
-            let note = octave1[k] + this.options.octaveBegin
+            var k = e.code;
+            let note = keyboardTones[k] + this.options.octaveBegin
 
-            if (k in octave1 && !(note in keys)) {
+            if (k in keyboardTones && !(note in keys)) {
                 this.synthStart(note);
             }
         });
 
         document.addEventListener("keyup", (e) => {
-
             let octave = this.options.octaveBegin
-            var k = e.key;
-            let note = octave1[k] + octave;
-            if (k in octave1 && (note in keys)) {
+            var k = e.code;
+            let note = keyboardTones[k] + octave;
+            if (k in keyboardTones && (note in keys)) {
                 this.synthStop(note)
             }
         });
