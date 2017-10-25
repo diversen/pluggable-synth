@@ -1,6 +1,6 @@
 {
   "name": "pluggable-synth",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple piano to play on with your keyboard",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,6 @@
   "homepage": "https://github.com/diversen/pluggable-synth#readme",
   "dependencies": {
     "adsr-gain-node": "^1.0.7",
-    "js-css-piano": "^1.0.6",
     "js-svg-piano": "^1.0.0",
     "keyboard-tones": "^1.0.3",
     "note-parser": "^2.0.1",
