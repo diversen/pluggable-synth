@@ -26,6 +26,7 @@
   "dependencies": {
     "adsr-gain-node": "^1.0.7",
     "js-css-piano": "^1.0.6",
+    "js-svg-piano": "^1.0.0",
     "keyboard-tones": "^1.0.3",
     "note-parser": "^2.0.1",
     "tone-frequency": "^1.0.5",

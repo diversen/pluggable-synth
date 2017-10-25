@@ -1,9 +1,10 @@
 # pluggable-synth
 
-A simple pluggable synth which you can use with your computer keyboard or a midi keyboard
+A simple pluggable synth which you can use with your computer keyboard or a midi keyboard,
+pointer device. 
 
 Use your computer keyboard as piano - or connect a midi keyboard - 
-and connect costum build `synths` to the piano
+and connect custum build `synths` to the piano
 
 ## Install: 
 
@@ -24,6 +25,12 @@ You can see this example here:
 ## Build and watch example
 
     ./watch
+
+## Related
+
+Built on this scalable svg piano:
+
+[js-svg-piano](https://diversen.github.io/js-svg-piano/)
 
 ## License
 

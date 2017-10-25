@@ -38,14 +38,14 @@ $(document).ready(function () {
 
     var elemID = 'piano-container'
     var p = new pluggableSynth(elemID, {
-        octaves: 2,
+        octaves: 3, 
         octaveBegin: 3    
     })
     
     // Draws the piano
     p.createPiano()
 
-    // Set synth to synth
+    // Set synth to test synth above
     p.synth = testSynth
     
     // enable keyboard events
@@ -54,7 +54,7 @@ $(document).ready(function () {
     // Enable mouse events
     p.enableMouseEvents()
     
-    // All midi tones will be played, but only two octaves is visible
+    // All midi tones will be played, but only 3 octaves is visible
     // You can specify input port, but defaults to 1 
     p.enableMidiEvents(1)
 

@@ -1,11 +1,11 @@
 const noteParser = require('note-parser')
 const keyboardTones = require('./keyboard-tones.js');
-const jsCssPiano = require('js-css-piano');
+const jsSvgPiano = require('js-svg-piano');
 const webmidi = require('webmidi')
 
 var keys = {};
 
-jsCssPiano.prototype = {
+jsSvgPiano.prototype = {
 
     getFrequency: function (note) {
         note = note.replace('s', '#');
@@ -19,7 +19,8 @@ jsCssPiano.prototype = {
     },
 
     toggleKey: function (note) {
-        let selector = '#' + this.elemID + " > .piano li[data-note='" + note + "']"
+        note = note.toLowerCase(note)
+        let selector = '#' + this.elemID + " rect[data-note='" + note + "']"
         let elem = document.querySelector(selector)
         if (!elem) {
             return
@@ -146,4 +147,4 @@ jsCssPiano.prototype = {
     },
 }
 
-module.exports = jsCssPiano;
+module.exports = jsSvgPiano;
