@@ -10,8 +10,7 @@ var keyboardTones = {
     KeyY: 'gs',
     KeyH: 'a',
     KeyU: 'as',
-    KeyJ: 'b',
-    KeyK: 'c'
+    KeyJ: 'b'
 };
 
 module.exports = keyboardTones;
