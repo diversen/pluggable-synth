@@ -14,8 +14,6 @@ and connect custum build `synths` to the piano
 
 See: [test.js](test.js)
 
-Remember to include the [css/piano.css](css/piano.css)
-
 You can see [index.html](index.html) which includes the bundle built from [test.js](test.js)
 
 You can see this example here: 
