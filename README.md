@@ -28,7 +28,7 @@ You can see this example here:
 
 Built on this scalable svg piano:
 
-[js-svg-piano](https://diversen.github.io/js-svg-piano/)
+[js-svg-piano](https://github.com/diversen/js-svg-piano/)
 
 ## License
 
