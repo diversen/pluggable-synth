@@ -5,7 +5,8 @@ const pluggableSynth = require('./index')
 
 const audioCtx = new AudioContext(); 
 const masterGain = audioCtx.createGain();
-masterGain.gain.value = 0.1;
+masterGain.gain.setTargetAtTime(0.1, audioCtx.currentTime, 0.5)
+// masterGain.gain.value = 0.1;
 
 /**
  * A very simple example synth object
@@ -46,7 +47,7 @@ $(document).ready(function () {
     p.createPiano()
 
     // Set synth to test synth above
-    p.synth = testSynth
+    p.synth = testSynth2
     
     // enable keyboard events
     p.enableKeyboardEvents()

@@ -4,10 +4,9 @@ const adsrGainNode = require('adsr-gain-node');
 let audioCtx = new AudioContext(); 
 let masterGain = audioCtx.createGain();
 
-masterGain.gain.value = 0.3;
+masterGain.gain.setTargetAtTime(0.3, audioCtx.currentTime, 0.0)
+// masterGain.gain.value = 0.3;
 masterGain.connect(audioCtx.destination);
-
-
 
 function getBeatingOsc(audioCtx, freq, velocity) {
 
@@ -30,16 +29,18 @@ function getBeatingOsc(audioCtx, freq, velocity) {
     synthGain.setOptions({
         initGain: 0.1, // Init gain on note
         maxGain: velocity, // Max gain on note
-        attackTime: 0.1, // AttackTime. gain.init to gain.max in attackTime
-        sustainTime: 3, // Sustain note in time
-        releaseTime: 1 // Approximated end time. Calculated with secondsToTimeConstant()
+        attackTime: 1.0, // AttackTime. gain.init to gain.max in attackTime
+        sustainTime: 0.2, // Sustain note in time
+        releaseTime: 0.5 // Approximated end time. Calculated with secondsToTimeConstant()
     
     });
     
     this.gain = synthGain.getGainNode(audioCtx.currentTime);
 
-    this.osc1.frequency.value = freq // e.g. 400
-    this.osc2.frequency.value = freq + (freq*0.01) // Add a little
+    // this.osc1.frequency.value = freq // e.g. 400
+    this.osc1.frequency.setValueAtTime(freq, audioCtx.currentTime)
+    // this.osc2.frequency.value = freq + (freq*0.01) // Add a little
+    this.osc2.frequency.setValueAtTime(freq, audioCtx.currentTime)
 
     this.osc1.connect(this.gain);
     this.osc2.connect(this.gain);
