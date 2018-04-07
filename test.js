@@ -2,40 +2,65 @@
 // const synth = require('pluggable-synth')
 // But this is the test so include index
 const pluggableSynth = require('./index')
-
 const audioCtx = new AudioContext(); 
-const masterGain = audioCtx.createGain();
-masterGain.gain.setTargetAtTime(0.1, audioCtx.currentTime, 0.5)
-// masterGain.gain.value = 0.1;
+
+// This is just for this test synth
+const adsrGain = require('adsr-gain-node')
+
+// Helper function to get ADSR 
+function getADSR (velocity) {
+
+    let adsr = new adsrGain(audioCtx);
+    adsr.setOptions({
+        attackAmp: 0.001, 
+        decayAmp: 0.1,
+        sustainAmp: velocity,
+        releaseAmp: 0.001,
+        attackTime: 0.01,
+        decayTime: 0.1,
+        sustainTime: 1.0, 
+        releaseTime: 2.0,
+        autoRelease: false
+    });
+    return adsr
+}
+
 
 /**
  * A very simple example synth object
  * The synth which is going to be connected to the piano.
  * Implement a `start` and a `stop` method 
- * 
- * 
  */
 function testSynth () {
 
-    this.start = function (freq, options) {
+    this.start = function (freq, options, velocity) {
+
+        // If midi options are present use velocity from options
+        if (options) {
+            velocity = options.velocity
+        } else {
+            velocity = 0.3
+        }
 
         this.oscillator = audioCtx.createOscillator();
         this.oscillator.type = 'square';
         this.oscillator.frequency.value = freq; // value in hertz
-        this.oscillator.connect(masterGain);
-        masterGain.connect(audioCtx.destination);
+
+        this.adsr = getADSR(velocity);
+        this.gainNode = this.adsr.getGainNode(audioCtx.currentTime);
+
+        this.oscillator.connect(this.gainNode);
+        this.gainNode.connect(audioCtx.destination);
         this.oscillator.start();
     }
 
     this.stop = function () {
-        this.oscillator.stop();
+        this.oscillator.stop(this.adsr.releaseTimeNow());
+        this.adsr.releaseNow();
     }
 }
 
-// Use a more interesting synth
-var testSynth2 = require('./synth') 
-
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function(){ 
 
     var elemID = 'piano-container'
     var p = new pluggableSynth(elemID, {
@@ -47,7 +72,7 @@ $(document).ready(function () {
     p.createPiano()
 
     // Set synth to test synth above
-    p.synth = testSynth2
+    p.synth = testSynth
     
     // enable keyboard events
     p.enableKeyboardEvents()

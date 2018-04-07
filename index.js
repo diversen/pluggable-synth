@@ -35,7 +35,6 @@ jsSvgPiano.prototype = {
         let synth = new this.synth();
 
         synth.start(freq, options);
-        console.log(note)
         keys[note] = synth;
     },
 
@@ -66,7 +65,7 @@ jsSvgPiano.prototype = {
             let k = e.code;
             let keyAry = keyboardTones[k];
             if (!keyAry) return
-            
+
             let note = keyAry[0] + (keyAry[1] + this.options.octaveBegin)
             if (k in keyboardTones && (note in keys)) {
                 this.synthStop(note)
