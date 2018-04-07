@@ -26,7 +26,6 @@
   "dependencies": {
     "js-svg-piano": "^1.0.0",
     "note-parser": "^2.0.1",
-    "tone-frequency": "^1.0.5",
     "webmidi": "^2.0.0"
   }
 }
