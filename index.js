@@ -35,6 +35,7 @@ jsSvgPiano.prototype = {
         let synth = new this.synth();
 
         synth.start(freq, options);
+        console.log(note)
         keys[note] = synth;
     },
 
@@ -46,12 +47,15 @@ jsSvgPiano.prototype = {
         delete keys[note]
     },
 
-    // Enable only one octave on keyboard
+    // Enable two octaves on keyboard
     enableKeyboardEvents: function () {
         document.addEventListener("keydown", (e) => {
 
-            var k = e.code;
-            let note = keyboardTones[k] + this.options.octaveBegin
+            let k = e.code;
+            let keyAry = keyboardTones[k];
+            if (!keyAry) return
+
+            let note = keyAry[0] + (keyAry[1] + this.options.octaveBegin)
 
             if (k in keyboardTones && !(note in keys)) {
                 this.synthStart(note);
@@ -59,9 +63,11 @@ jsSvgPiano.prototype = {
         });
 
         document.addEventListener("keyup", (e) => {
-            let octave = this.options.octaveBegin
-            var k = e.code;
-            let note = keyboardTones[k] + octave;
+            let k = e.code;
+            let keyAry = keyboardTones[k];
+            if (!keyAry) return
+            
+            let note = keyAry[0] + (keyAry[1] + this.options.octaveBegin)
             if (k in keyboardTones && (note in keys)) {
                 this.synthStop(note)
             }

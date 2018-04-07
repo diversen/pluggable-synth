@@ -20,6 +20,10 @@ You can see this example here:
 
 [https://diversen.github.io/pluggable-synth/](https://diversen.github.io/pluggable-synth/)
 
+Note: The keyboard keys are mapped in this file (two octaves): 
+
+[keyboard-tones.js](keyboard-tones.js)
+
 ## Build and watch example
 
     ./watch
