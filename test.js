@@ -36,7 +36,7 @@ function testSynth () {
     this.start = function (freq, options, velocity) {
 
         // If midi options are present use velocity from options
-        if (options) {
+        if (options && options.velocity) {
             velocity = options.velocity
         } else {
             velocity = 0.3
@@ -60,7 +60,17 @@ function testSynth () {
     }
 }
 
+function resumeAudioEvent () {
+    document.querySelector('#resume').addEventListener('click', function() {
+        audioCtx.resume().then(() => {
+          console.log('Playback resumed successfully');
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function(){ 
+
+    resumeAudioEvent();
 
     var elemID = 'piano-container'
     var p = new pluggableSynth(elemID, {

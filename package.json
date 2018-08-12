@@ -1,6 +1,6 @@
 {
   "name": "pluggable-synth",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A simple piano to play on with your keyboard",
   "main": "index.js",
   "scripts": {
